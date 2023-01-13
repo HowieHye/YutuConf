@@ -1,0 +1,36 @@
+#!name = BiliBili增强
+#!desc = BiliBili增强
+#!openUrl = https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Bilibili.conf
+#!author = @ddgksf2013, @blackmatrix7, @app2smile, @yjqiang
+#!homepage = https://github.com/ddgksf2013/Rewrite/raw/master/AdBlock/Bilibili.conf
+#!icon = https://raw.githubusercontent.com/deezertidal/private/main/icons/bili.png
+
+[Rewrite]
+^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\? reject-dict
+^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive reject-dict
+^https?:\/\/app\.bilibili\.com\/x\/resource\/ip reject
+^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default reject
+^https://app.bilibili.com/x/v2/splash/show reject-dict
+^https://app.bilibili.com/x/v2/search/defaultwords reject-dict
+^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report reject-dict
+^https://api.bilibili.com/pgc/season/player/cards reject-dict
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash|GetActivityTab) reject-dict
+
+[Script]
+http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https://app.bilibili.com/x/v2/search/square script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+http-response ^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$ script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_proto.js, requires-body=true, tag=bilibili_proto
+http-response ;^https?:\/\/app\.bilibili\.com\/x\/resource\/domain script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_startup_direct.js, requires-body=true, tag=bilibili_startup_direct
+http-response ;^https?:\/\/i.\.hdslb\.com\/bfs\/subtitle\/.+\.json$ script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_cc.js, requires-body=true, tag=bilibili_cc
+http-response ;^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=bilibili_json
+
+[Mitm]
+hostname = app.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, *.bilibili.com, *.bilibili.*, grpc.biliapi.net,api.biliapi.net, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net
