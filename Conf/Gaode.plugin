@@ -1,0 +1,25 @@
+#!name = 高德地图☆净化
+#!desc = 高德地图☆净化
+#!openUrl = https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/Amap.conf
+#!author = @ddgksf2013
+#!homepage = https://raw.githubusercontent.com/ddgksf2013/Rewrite/master/AdBlock/Amap.conf
+#!icon = 
+
+[Rewrite]
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information reject-200
+^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution reject
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend reject-dict
+^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif reject-img
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather reject-dict
+
+[Script]
+http-response ^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+http-response ^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+http-response ^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+http-response ^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+http-response ^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+http-response ^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+http-response ^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
+
+[Mitm]
+hostname=*amap.com
