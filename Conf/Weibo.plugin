@@ -6,6 +6,8 @@
 #!icon = https://raw.githubusercontent.com/deezertidal/private/main/icons/weiboad.png
 
 [Rewrite]
+^https?:\/\/api\.weibo\.cn\/\d\/!\/huati\/discovery_home_bottom_getdotinfo reject-dict
+^https?:\/\/m?api\.weibo\.c(n|om)\/\d/push/daily reject-dict
 ^https?:\/\/(preload-click|preload-impression)\.uve\.weibo\.com\/(interface\/wbpullad\/wbpullad_click\.php|wbapplua\/get_wbpullad_log\.lua) reject
 ^https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkconfig\.php reject
 ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/hot\/hours_spotlight reject-dict

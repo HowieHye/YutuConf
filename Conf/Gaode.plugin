@@ -13,6 +13,7 @@
 ^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather reject-dict
 
 [Script]
+http-response https://m5.amap.com/ws/shield/frogserver/aocs/updatable script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
 http-response ^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
 http-response ^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
 http-response ^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
@@ -22,4 +23,4 @@ http-response ^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefa
 http-response ^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword script-path=https://github.com/ddgksf2013/Scripts/raw/master/amap.js, requires-body=true, tag=amap
 
 [Mitm]
-hostname=*amap.com
+hostname=*.amap.com
